@@ -14,11 +14,16 @@ class UserController{
             return res.sendStatus(409);
         }
 
+        
         const user = repository.create({email, password});
         await repository.save(user);
 
-        return res.json(user.id);
+        return res.json(user);
 
+    }
+
+    index(req:Request, res:Response){
+        res.send({userId: req.userId});
     }
 }
 
